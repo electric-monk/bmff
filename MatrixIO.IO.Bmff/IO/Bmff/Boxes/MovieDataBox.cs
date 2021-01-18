@@ -42,6 +42,7 @@ namespace MatrixIO.IO.Bmff.Boxes
             }
 
             this.ContentOffset = contentOffset;
+            this.Offset = 0;
             this._sourceStream = contentStream;
         }
     }
