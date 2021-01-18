@@ -19,6 +19,8 @@ namespace MatrixIO.IO.Bmff.Boxes
         {
             _rate = 0x00010000; // 1.0 normal rate
             _volume = 0x0100; // 1.0 full volume
+            Reserved = new byte[2 + (2 * 4)];
+            PreDefined = new byte[6 * 4];
             Matrix = new int[] { 0x00010000, 0, 0, 0, 0x00010000, 0, 0, 0, 0x40000000 }; // Unity Matrix
         }
 
