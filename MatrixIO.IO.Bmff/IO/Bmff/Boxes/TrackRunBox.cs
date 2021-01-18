@@ -31,6 +31,8 @@ namespace MatrixIO.IO.Bmff.Boxes
         {
             ulong calculatedSize = base.CalculateSize() + 4;
 
+            CheckFlags();
+
             if ((Flags & TrackRunFlags.DataOffsetPresent) == TrackRunFlags.DataOffsetPresent)
                 calculatedSize += 4;
 
@@ -94,17 +96,7 @@ namespace MatrixIO.IO.Bmff.Boxes
 
         protected override void SaveToStream(Stream stream)
         {
-            if (DataOffset.HasValue) Flags |= TrackRunFlags.DataOffsetPresent;
-            if (FirstSampleFlags.HasValue) Flags |= TrackRunFlags.FirstSampleFlagsPresent;
-
-            foreach (var entry in Entries)
-            {
-                // TODO: There must be a better way... probably involves changing TrackRunEntry
-                if (entry.SampleDuration.HasValue) Flags |= TrackRunFlags.SampleDurationPresent;
-                if (entry.SampleSize.HasValue) Flags |= TrackRunFlags.SampleSizePresent;
-                if (entry.SampleFlags.HasValue) Flags |= TrackRunFlags.SampleFlagsPresent;
-                if (entry.SampleCompositionTimeOffset.HasValue) Flags |= TrackRunFlags.SampleCompositionTimeOffsetsPresent;
-            }
+            CheckFlags();
 
             base.SaveToStream(stream);
 
@@ -126,6 +118,20 @@ namespace MatrixIO.IO.Bmff.Boxes
                     stream.WriteBEUInt32(entry.SampleFlags.HasValue ? entry.SampleFlags._flags : 0);
                 if ((Flags & TrackRunFlags.SampleCompositionTimeOffsetsPresent) == TrackRunFlags.SampleCompositionTimeOffsetsPresent)
                     stream.WriteBEUInt32(entry.SampleCompositionTimeOffset ?? 0);
+            }
+        }
+
+        private void CheckFlags()
+        {
+            if (DataOffset.HasValue) Flags |= TrackRunFlags.DataOffsetPresent;
+            if (FirstSampleFlags.HasValue) Flags |= TrackRunFlags.FirstSampleFlagsPresent;
+
+            foreach (var entry in Entries) {
+                // TODO: There must be a better way... probably involves changing TrackRunEntry
+                if (entry.SampleDuration.HasValue) Flags |= TrackRunFlags.SampleDurationPresent;
+                if (entry.SampleSize.HasValue) Flags |= TrackRunFlags.SampleSizePresent;
+                if (entry.SampleFlags.HasValue) Flags |= TrackRunFlags.SampleFlagsPresent;
+                if (entry.SampleCompositionTimeOffset.HasValue) Flags |= TrackRunFlags.SampleCompositionTimeOffsetsPresent;
             }
         }
 
