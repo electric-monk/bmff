@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Text;
 
 namespace MatrixIO.IO.Bmff.Boxes
@@ -22,6 +23,25 @@ namespace MatrixIO.IO.Bmff.Boxes
 
         public string Location { get; set; }
 
+        private new DataEntryUrlFlags Flags
+        {
+            get => (DataEntryUrlFlags)_flags;
+            set => _flags = (uint)value;
+        }
+
+        public bool MovieIsSelfContained
+        {
+            get {
+                return (Flags & DataEntryUrlFlags.MovieIsSelfContained) != 0;
+            }
+            set {
+                if (value)
+                    Flags |= DataEntryUrlFlags.MovieIsSelfContained;
+                else
+                    Flags &= ~DataEntryUrlFlags.MovieIsSelfContained;
+            }
+        }
+
         public override ulong CalculateSize()
         {
             return base.CalculateSize() + (string.IsNullOrEmpty(Location) ? 0 : (ulong)Encoding.UTF8.GetByteCount(Location));
@@ -42,6 +62,12 @@ namespace MatrixIO.IO.Bmff.Boxes
             {
                 stream.WriteUTF8String(Location);
             }
+        }
+
+        [Flags]
+        public enum DataEntryUrlFlags : int
+        {
+            MovieIsSelfContained = 0x000001,
         }
     }
 }
