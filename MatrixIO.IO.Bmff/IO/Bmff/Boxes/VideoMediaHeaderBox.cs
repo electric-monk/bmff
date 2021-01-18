@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 
 namespace MatrixIO.IO.Bmff.Boxes
 {
@@ -9,7 +10,9 @@ namespace MatrixIO.IO.Bmff.Boxes
     public sealed class VideoMediaHeaderBox : FullBox
     {
         public VideoMediaHeaderBox()
-            : base() { }
+            : base() {
+            Flags = VideoMediaFlags.NoLeanAhead;
+        }
 
         public VideoMediaHeaderBox(Stream stream) 
             : base(stream) { }
@@ -17,6 +20,25 @@ namespace MatrixIO.IO.Bmff.Boxes
         public CompositionMode GraphicsMode { get; set; }
 
         public Colour OpColour { get; set; }
+
+        private new VideoMediaFlags Flags
+        {
+            get => (VideoMediaFlags)_flags;
+            set => _flags = (uint)value;
+        }
+
+        public bool NoLeanAhead
+        {
+            get {
+                return (Flags & VideoMediaFlags.NoLeanAhead) != 0;
+            }
+            set {
+                if (value)
+                    Flags |= VideoMediaFlags.NoLeanAhead;
+                else
+                    Flags &= ~VideoMediaFlags.NoLeanAhead;
+            }
+        }
 
         public override ulong CalculateSize()
         {
@@ -65,6 +87,12 @@ namespace MatrixIO.IO.Bmff.Boxes
             {
                 return $"[0x{Red:X4}, 0x{Green:X4}, 0x{Blue:X4}]";
             }
+        }
+
+        [Flags]
+        public enum VideoMediaFlags : int
+        {
+            NoLeanAhead = 0x000001,
         }
     }
 }
