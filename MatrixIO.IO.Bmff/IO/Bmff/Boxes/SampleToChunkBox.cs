@@ -14,7 +14,7 @@ namespace MatrixIO.IO.Bmff.Boxes
         public SampleToChunkBox(Stream stream) 
             : base(stream) { }
 
-        public SampleToChunkEntry[] Entries { get; set; }
+        public SampleToChunkEntry[] Entries { get; set; } = new SampleToChunkEntry[0];
 
         public int EntryCount => Entries.Length;
 

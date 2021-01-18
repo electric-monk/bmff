@@ -12,7 +12,7 @@ namespace MatrixIO.IO.Bmff.Boxes
         public ChunkOffsetBox() : base() { }
         public ChunkOffsetBox(Stream stream) : base(stream) { }
 
-        public ChunkOffsetEntry[] Entries { get; set; }
+        public ChunkOffsetEntry[] Entries { get; set; } = new ChunkOffsetEntry[0];
 
         public int EntryCount => Entries.Length;
 

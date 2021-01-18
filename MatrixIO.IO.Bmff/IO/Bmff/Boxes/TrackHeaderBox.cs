@@ -16,9 +16,9 @@ namespace MatrixIO.IO.Bmff.Boxes
         public TrackHeaderBox(Stream stream)
             : base(stream) { }
 
-        public DateTime CreationTime { get; set; }
+        public DateTime CreationTime { get; set; } = MovieHeaderBox.Convert1904Time(0);
 
-        public DateTime ModificationTime { get; set; }
+        public DateTime ModificationTime { get; set; } = MovieHeaderBox.Convert1904Time(0);
 
         public uint TrackID { get; set; }
 

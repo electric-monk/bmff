@@ -20,7 +20,7 @@ namespace MatrixIO.IO.Bmff.Boxes
 
         public uint SampleCount => (SampleSize == 0) ? (uint)Entries.Length : _sampleCount;
 
-        public SampleSizeEntry[] Entries { get; set; }
+        public SampleSizeEntry[] Entries { get; set; } = new SampleSizeEntry[0];
 
         public uint EntryCount => (uint)Entries.Length;
 

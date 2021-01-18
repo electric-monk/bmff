@@ -21,9 +21,9 @@ namespace MatrixIO.IO.Bmff.Boxes
         public MediaHeaderBox(Stream stream)
             : base(stream) { }
 
-        public DateTime CreationTime { get; set; }
+        public DateTime CreationTime { get; set; } = MovieHeaderBox.Convert1904Time(0);
 
-        public DateTime ModificationTime { get; set; }
+        public DateTime ModificationTime { get; set; } = MovieHeaderBox.Convert1904Time(0);
 
         public uint TimeScale { get; set; }
 
@@ -88,7 +88,7 @@ namespace MatrixIO.IO.Bmff.Boxes
 
         internal static ushort ConvertThreeLetterLanguageCode(string language)
         {
-            byte[] langBytes = Encoding.UTF8.GetBytes(language);
+            byte[] langBytes = Encoding.UTF8.GetBytes((language == null) ? "und" : language);
 
             if (langBytes.Length != 3)
             {

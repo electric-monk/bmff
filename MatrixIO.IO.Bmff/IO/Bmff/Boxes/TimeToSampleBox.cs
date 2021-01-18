@@ -14,7 +14,7 @@ namespace MatrixIO.IO.Bmff.Boxes
         public TimeToSampleBox(Stream stream)
             : base(stream) { }
 
-        public TimeToSampleEntry[] Entries { get; set; }
+        public TimeToSampleEntry[] Entries { get; set; } = new TimeToSampleEntry[0];
 
         public int EntryCount => Entries.Length;
 
