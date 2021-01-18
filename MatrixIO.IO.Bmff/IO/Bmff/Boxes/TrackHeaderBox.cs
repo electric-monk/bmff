@@ -41,7 +41,65 @@ namespace MatrixIO.IO.Bmff.Boxes
         public FixedPoint_16_16 Width { get; set; }
         
         public FixedPoint_16_16 Height { get; set; }
-   
+
+        private new TrackFlags Flags
+        {
+            get => (TrackFlags)_flags;
+            set => _flags = (uint)value;
+        }
+
+        public bool Enabled
+        {
+            get {
+                return (Flags & TrackFlags.Enabled) != 0;
+            }
+            set {
+                if (value)
+                    Flags |= TrackFlags.Enabled;
+                else
+                    Flags &= ~TrackFlags.Enabled;
+            }
+        }
+
+        public bool InMovie
+        {
+            get {
+                return (Flags & TrackFlags.InMovie) != 0;
+            }
+            set {
+                if (value)
+                    Flags |= TrackFlags.InMovie;
+                else
+                    Flags &= ~TrackFlags.InMovie;
+            }
+        }
+
+        public bool InPreview
+        {
+            get {
+                return (Flags & TrackFlags.InPreview) != 0;
+            }
+            set {
+                if (value)
+                    Flags |= TrackFlags.InPreview;
+                else
+                    Flags &= ~TrackFlags.InPreview;
+            }
+        }
+
+        public bool InPoster
+        {
+            get {
+                return (Flags & TrackFlags.InPoster) != 0;
+            }
+            set {
+                if (value)
+                    Flags |= TrackFlags.InPoster;
+                else
+                    Flags &= ~TrackFlags.InPoster;
+            }
+        }
+
         public override ulong CalculateSize()
         {
             return base.CalculateSize() +
@@ -119,6 +177,15 @@ namespace MatrixIO.IO.Bmff.Boxes
 
             stream.WriteBEUInt32(Width.Value);
             stream.WriteBEUInt32(Height.Value);
+        }
+
+        [Flags]
+        public enum TrackFlags : int
+        {
+            Enabled = 0x000001,
+            InMovie = 0x000002,
+            InPreview = 0x000004,
+            InPoster = 0x000008,
         }
     }
 }
