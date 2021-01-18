@@ -27,7 +27,7 @@ namespace MatrixIO.IO.Bmff.Boxes
         
         public TrackRunEntry[] Entries { get; set; }
 
-        internal override ulong CalculateSize()
+        public override ulong CalculateSize()
         {
             ulong calculatedSize = base.CalculateSize() + 4;
 

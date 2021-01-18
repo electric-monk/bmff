@@ -35,7 +35,7 @@ namespace MatrixIO.IO.Bmff.Boxes
             set => _flags = (uint)value;
         }
 
-        internal override ulong CalculateSize()
+        public override ulong CalculateSize()
         {
             ulong calculatedSize = base.CalculateSize() + 4;
 

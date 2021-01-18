@@ -16,7 +16,7 @@ namespace MatrixIO.IO.Bmff.Boxes
 
         public int EntryCount => Entries.Length;
 
-        internal override ulong CalculateSize()
+        public override ulong CalculateSize()
         {
             return base.CalculateSize() + 4 + ((ulong)Entries.Length * 4);
         }

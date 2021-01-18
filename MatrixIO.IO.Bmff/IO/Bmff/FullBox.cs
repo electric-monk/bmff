@@ -42,7 +42,7 @@ namespace MatrixIO.IO.Bmff
             }
         }
 
-        internal override ulong CalculateSize()
+        public override ulong CalculateSize()
         {
             return base.CalculateSize() + 4;
         }

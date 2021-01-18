@@ -142,7 +142,7 @@ namespace MatrixIO.IO.Bmff
         /// Calaculates the serialized size of the Box and its contents.
         /// </summary>
         /// <returns>Length of the Box header and contents.</returns>
-        internal virtual ulong CalculateSize()
+        public virtual ulong CalculateSize()
         {
             ulong calculatedSize = (ulong)(Size == 1 ? 16 : 8);
 

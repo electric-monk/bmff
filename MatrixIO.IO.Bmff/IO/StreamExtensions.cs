@@ -7,7 +7,7 @@ using System.Text;
 
 namespace MatrixIO.IO
 {
-    internal static class StreamExtensions
+    public static class StreamExtensions
     {
         public static byte ReadOneByte(this Stream stream)
         {

@@ -13,7 +13,7 @@ namespace MatrixIO.IO.Bmff.Boxes
         public SampleDescriptionBox() : base() { }
         public SampleDescriptionBox(Stream stream) : base(stream) { }
 
-        internal override ulong CalculateSize()
+        public override ulong CalculateSize()
         {
             return base.CalculateSize() + 4;
         }

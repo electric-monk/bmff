@@ -42,7 +42,7 @@ namespace MatrixIO.IO.Bmff.Boxes
         
         public FixedPoint_16_16 Height { get; set; }
    
-        internal override ulong CalculateSize()
+        public override ulong CalculateSize()
         {
             return base.CalculateSize() +
                 (ulong)(Version == 1 ? 8 + 8 + 4 + 4 + 8 : 4 + 4 + 4 + 4 + 4) + (2 * 4) + 2 + 2 + 2 + 2 + (9 * 4) + 4 + 4;

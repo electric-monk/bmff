@@ -18,7 +18,7 @@ namespace MatrixIO.IO.Bmff.Boxes
 
         public Colour OpColour { get; set; }
 
-        internal override ulong CalculateSize()
+        public override ulong CalculateSize()
         {
             return base.CalculateSize() + 2 + 6;
         }

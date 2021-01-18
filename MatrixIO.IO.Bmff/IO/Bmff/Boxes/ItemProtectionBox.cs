@@ -13,7 +13,7 @@ namespace MatrixIO.IO.Bmff.Boxes
         public ItemProtectionBox() : base() { }
         public ItemProtectionBox(Stream stream) : base(stream) { }
 
-        internal override ulong CalculateSize()
+        public override ulong CalculateSize()
         {
             return base.CalculateSize() + 2;
         }

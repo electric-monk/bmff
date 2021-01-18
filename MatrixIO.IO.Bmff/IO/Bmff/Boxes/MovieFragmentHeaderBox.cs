@@ -16,7 +16,7 @@ namespace MatrixIO.IO.Bmff.Boxes
 
         public uint SequenceNumber { get; set; }
 
-        internal override ulong CalculateSize()
+        public override ulong CalculateSize()
         {
             return base.CalculateSize() + 4;
         }

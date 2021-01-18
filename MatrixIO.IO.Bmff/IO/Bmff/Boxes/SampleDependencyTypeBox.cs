@@ -17,7 +17,7 @@ namespace MatrixIO.IO.Bmff.Boxes
 
         public SampleDependencyEntry[] Entries { get; set; }
 
-        internal override ulong CalculateSize()
+        public override ulong CalculateSize()
         {
             return base.CalculateSize() + (ulong)Entries.Length;
         }

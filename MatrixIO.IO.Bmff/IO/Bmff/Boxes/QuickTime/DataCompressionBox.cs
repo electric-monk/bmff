@@ -18,7 +18,7 @@ namespace MatrixIO.IO.Bmff.Boxes
 
         public FourCC Format { get; set; }
 
-        internal override ulong CalculateSize()
+        public override ulong CalculateSize()
         {
             return base.CalculateSize() + (string.IsNullOrEmpty(Format) ? 0 : (ulong)Encoding.UTF8.GetByteCount(Format));
         }

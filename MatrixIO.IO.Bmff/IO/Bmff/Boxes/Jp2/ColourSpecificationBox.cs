@@ -22,7 +22,7 @@ namespace MatrixIO.IO.Bmff.Boxes
 
         public EnumeratedColorspaces EnumeratedColorspace { get; set; }
 
-        internal override ulong CalculateSize()
+        public override ulong CalculateSize()
         {
             ulong size = base.CalculateSize() + 1 + 1 + 1;
 

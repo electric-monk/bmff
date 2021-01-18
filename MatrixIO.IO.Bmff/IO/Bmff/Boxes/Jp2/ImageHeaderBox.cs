@@ -55,7 +55,7 @@ namespace MatrixIO.IO.Bmff.Boxes
             set => _isIntellectualProperty = value ? (byte)0x01 : (byte)0x00;
         }
 
-        internal override ulong CalculateSize()
+        public override ulong CalculateSize()
         {
             return base.CalculateSize() + 4 + 4 + 2 + 1 + 1 + 1 + 1;
         }

@@ -18,7 +18,7 @@ namespace MatrixIO.IO.Bmff.Boxes
 
         private ushort Reserved { get; set; }
 
-        internal override ulong CalculateSize()
+        public override ulong CalculateSize()
         {
             return base.CalculateSize() + 2 + 2;
         }

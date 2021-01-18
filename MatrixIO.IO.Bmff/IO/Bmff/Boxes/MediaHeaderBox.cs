@@ -34,7 +34,7 @@ namespace MatrixIO.IO.Bmff.Boxes
 
         public ushort Predefined { get; set; }
 
-        internal override ulong CalculateSize()
+        public override ulong CalculateSize()
         {
             return base.CalculateSize() + (ulong)(Version == 1 ? 8 + 8 + 4 + 8 : 4 + 4 + 4 + 4) + 2 + 2;
         }

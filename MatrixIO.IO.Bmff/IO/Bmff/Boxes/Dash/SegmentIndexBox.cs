@@ -28,7 +28,7 @@ namespace MatrixIO.IO.Bmff.IO.Bmff.Boxes.Dash
 
         public SegmentIndexEntry[] Entries { get; set; }
 
-        internal override ulong CalculateSize()
+        public override ulong CalculateSize()
         {
             ulong size = base.CalculateSize() + 20;
 

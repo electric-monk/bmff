@@ -21,7 +21,7 @@ namespace MatrixIO.IO.Bmff.Boxes
 
         public IList<Box> Children { get; } = new List<Box>();
 
-        internal override ulong CalculateSize()
+        public override ulong CalculateSize()
         {
             return base.CalculateSize() + 4;
         }

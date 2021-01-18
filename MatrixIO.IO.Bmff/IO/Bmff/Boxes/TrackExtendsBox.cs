@@ -61,7 +61,7 @@ namespace MatrixIO.IO.Bmff.Boxes
             set => _defaultSampleFlags.DegredationPriority = value;
         }
 
-        internal override ulong CalculateSize()
+        public override ulong CalculateSize()
         {
             return base.CalculateSize() + (5 * 4);
         }

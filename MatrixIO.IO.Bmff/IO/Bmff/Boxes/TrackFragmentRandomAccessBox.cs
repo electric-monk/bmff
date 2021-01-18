@@ -20,7 +20,7 @@ namespace MatrixIO.IO.Bmff.Boxes
 
         public TrackFragmentEntry[] Entries { get; set; }
 
-        internal override ulong CalculateSize()
+        public override ulong CalculateSize()
         {
             ulong entries = (ulong)Entries.Length;
 

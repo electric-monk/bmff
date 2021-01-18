@@ -22,7 +22,7 @@ namespace MatrixIO.IO.Bmff.Boxes
 
         public short Id { get; set; }
 
-        internal override ulong CalculateSize()
+        public override ulong CalculateSize()
         {
             return base.CalculateSize() + (string.IsNullOrEmpty(Alias) ? 0 : (ulong)Encoding.UTF8.GetByteCount(Alias)) + 1 + 4 + 2;
         }

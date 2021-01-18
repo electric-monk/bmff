@@ -16,7 +16,7 @@ namespace MatrixIO.IO.Bmff.Boxes
 
         public ulong FragmentDuration { get; set; }
 
-        internal override ulong CalculateSize()
+        public override ulong CalculateSize()
         {
             return base.CalculateSize() + (Version == 1 ? (ulong)8 : 4);
         }

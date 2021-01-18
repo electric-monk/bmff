@@ -32,7 +32,7 @@ namespace MatrixIO.IO.Bmff.Boxes
 
         public IList<FourCC> CompatibleBrands { get; } = new List<FourCC>();
 
-        internal override ulong CalculateSize()
+        public override ulong CalculateSize()
         {
             return base.CalculateSize() + 4 + 4 + ((ulong)CompatibleBrands.Count * 4);
         }

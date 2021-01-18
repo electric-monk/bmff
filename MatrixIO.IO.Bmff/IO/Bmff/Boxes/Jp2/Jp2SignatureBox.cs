@@ -11,7 +11,7 @@ namespace MatrixIO.IO.Bmff.Boxes
         public Jp2SignatureBox() : base() { }
         public Jp2SignatureBox(Stream stream) : base(stream) { }
 
-        internal override ulong CalculateSize()
+        public override ulong CalculateSize()
         {
             return base.CalculateSize() + (ulong)_Payload.Length;
         }

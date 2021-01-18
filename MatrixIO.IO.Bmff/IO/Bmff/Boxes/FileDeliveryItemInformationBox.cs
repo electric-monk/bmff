@@ -14,7 +14,7 @@ namespace MatrixIO.IO.Bmff.Boxes
         public FileDeliveryItemInformationBox() : base() { }
         public FileDeliveryItemInformationBox(Stream stream) : base(stream) { }
 
-        internal override ulong CalculateSize()
+        public override ulong CalculateSize()
         {
             return base.CalculateSize() + 2;
         }

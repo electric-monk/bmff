@@ -18,7 +18,7 @@ namespace MatrixIO.IO.Bmff.Boxes
 
         public string Location { get; set; }
 
-        internal override ulong CalculateSize()
+        public override ulong CalculateSize()
         {
             return base.CalculateSize() +
                 (string.IsNullOrEmpty(Name) ? 0 : (ulong)Encoding.UTF8.GetByteCount(Name)) + 1 +
